@@ -1,0 +1,11 @@
+# Ignore compiled Python files
+*.pyc
+
+# Ignore virtual environment directories
+venv/
+
+# Ignore practice folder with test cases
+scraper/practice/
+
+# Ignore IDE-specific files
+.vscode/
