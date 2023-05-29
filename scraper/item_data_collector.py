@@ -28,11 +28,10 @@ class ItemDataCollector():
         self.driver.implicitly_wait(self.implicitly_wait)
         
 
-    def get_data(self, name: str) -> None:
+    def get_data(self, name: str, link: str) -> None:
         """gets item data from current url"""
 
-        product_name = name
-        self.item_data['product_name'] = product_name
+        self.item_data['product_name'] = name
 
         try:
             current_price = self.driver.find_element(by=By.CLASS_NAME, value='product-carriage__price').text.strip()[:-1]
@@ -43,7 +42,6 @@ class ItemDataCollector():
             # print(ex)
         self.item_data['current_price'] = current_price
         
-        link = self.driver.current_url
         self.item_data['link'] = link
 
         try:
@@ -85,7 +83,7 @@ def main() -> None:
             if counter == 5:
                 break
             driver.get(item.link.strip() + 'characteristics/')
-            scraper.get_data(item.name)
+            scraper.get_data(name=item.name, link=item.link)
             scraper.save_data()
 
             # after completing link, change status to 'done'

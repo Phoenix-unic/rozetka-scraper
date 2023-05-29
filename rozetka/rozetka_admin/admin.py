@@ -15,14 +15,14 @@ class KeyWordsAdmin(admin.ModelAdmin):
 @admin.register(Links)
 class LinksAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'link', 'status')
-    list_filter = ('name', 'link', 'status')
+    list_filter = ('status',)
     search_fields = ('name',)
 
 
 @admin.register(ProductInfo)
 class ProductInfoAdmin(admin.ModelAdmin):
     list_display = ('product_name', 'current_price', 'link', 'reviews', 'features')
-    list_filter = ('product_name', 'current_price', 'link', 'reviews')
+    list_filter = ('current_price', 'reviews')
     search_fields = ('product_name', 'features')
 
 
