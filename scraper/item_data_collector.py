@@ -10,6 +10,7 @@ from time import sleep
 
 
 class ItemDataCollector():
+    """defines webdriver with default options, defines parsing and datasaving methods"""
     def __init__(self) -> None:
         self.item_data = {}
         self.options_args = ["--ignore-certificate-errors", "--ignore-certificate-errors-spki-list", 
