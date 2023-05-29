@@ -1,8 +1,0 @@
-Traceback (most recent call last):
-  File "d:\WorkSpace\Python\projects active\RozetkaScraper\scraper\item_data_collector.py", line 86, in <module>
-    main()  # have some fun again))
-  File "d:\WorkSpace\Python\projects active\RozetkaScraper\scraper\item_data_collector.py", line 76, in main
-    scraper.get_data()
-  File "d:\WorkSpace\Python\projects active\RozetkaScraper\scraper\item_data_collector.py", line 53, in get_data
-    features_button = self.driver.find_elements(by=By.XPATH, value='//a[@class="tabs_link"]')[1]
-IndexError: list index out of range
