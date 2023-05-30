@@ -51,11 +51,17 @@ class ItemDataCollector():
             reviews = 0
         self.item_data['reviews'] = reviews
 
-        feature_labels = self.driver.find_elements(by=By.XPATH, value='//dt[@class="characteristics-full__label"]')[:5]
-        feature_labels_text = [item.find_element(by=By.TAG_NAME, value='span').text.strip() for item in feature_labels]
+        try:
+            feature_labels = self.driver.find_elements(by=By.XPATH, value='//dt[@class="characteristics-full__label"]')[:5]
+            feature_labels_text = [item.find_element(by=By.TAG_NAME, value='span').text.strip() for item in feature_labels]
+        except StaleElementReferenceException :
+            feature_labels_text = 'no features label'
 
-        feature_values = self.driver.find_elements(by=By.XPATH, value='//ul[@class="characteristics-full__sub-list"]')[:5]
-        feature_values_text = [item.find_element(by=By.TAG_NAME, value='li').text.strip() for item in feature_values]
+        try:
+            feature_values = self.driver.find_elements(by=By.XPATH, value='//ul[@class="characteristics-full__sub-list"]')[:5]
+            feature_values_text = [item.find_element(by=By.TAG_NAME, value='li').text.strip() for item in feature_values]
+        except StaleElementReferenceException :
+            feature_values_text = 'no features value'
 
         self.item_data['features'] = dict(zip(feature_labels_text, feature_values_text))
 
@@ -81,7 +87,7 @@ def main() -> None:
     with scraper.driver as driver:
         for item in links:
             counter += 1
-            if counter == 5:
+            if counter == 10:
                 break
             driver.get(item.link.strip() + 'characteristics/')
             scraper.get_data(name=item.name, link=item.link)
