@@ -8,7 +8,7 @@ from .models import KeyWords, Links, ProductInfo
 @admin.register(KeyWords)
 class KeyWordsAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'status')
-    list_filter = ('name', 'status')
+    list_filter = ('status',)
     search_fields = ('name', )
 
 
@@ -22,7 +22,6 @@ class LinksAdmin(admin.ModelAdmin):
 @admin.register(ProductInfo)
 class ProductInfoAdmin(admin.ModelAdmin):
     list_display = ('product_name', 'current_price', 'link', 'reviews', 'features')
-    list_filter = ('current_price', 'reviews')
     search_fields = ('product_name', 'features')
 
 
